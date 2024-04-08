@@ -1,0 +1,117 @@
+#spring:
+##  main:
+##    allow-circular-references: true
+#  datasource:
+#    url: jdbc:oracle:thin:@ldap://eusoud.ute.fedex.com/AG_CREWINFO_01,cn=OracleContext,dc=delphix-ute,dc=fedex,dc=com
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    username: FOCUS_APP
+#    password: Odvbw5tDOYlhn3cEGzhcodZod
+#    show-sql: true
+#    hikari:
+#      maximum-pool-size: 35
+#  jpa:
+#    database-platform: org.hibernate.dialect.Oracle10gDialect
+#    dialect: org.hibernate.dialect.Oracle10gDialect
+#    show-sql: true
+##  h2:
+##    console:
+##      enabled: true
+##  cloud:
+##    config:
+##      import-check:
+##        enabled: false
+##  profiles:
+##    active: chaos-monkey
+#
+##chaos:
+##  monkey:
+##    enabled: true
+##    watcher:
+##      service: true
+##    assaults:
+##      latencyActive: true
+#
+#management:
+#  endpoint:
+##    chaosmonkey:
+##      enabled: true
+##    chaosmonkeyjmx:
+##      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include:
+#          - health
+#          - info
+##          - chaosmonkey
+#
+#pilot:
+#  lookup:  https://crewpay-lookup-development.app.wtcdev3.paas.fedex.com/lookup/pilot/id/
+#
+#
+#
+##eureka:
+##  client:
+##    register-with-eureka: true
+##    fetch-registry: true
+##    service-url:
+##      defaultZone: https://crewpay-service-registry-development.app.wtcdev2.paas.fedex.com/eureka
+##  instance:
+##    hostname: localhost
+#
+##resilience4j:
+##  circuitbreaker:
+##    instances:
+##      VaccineService:
+#
+#
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  cloud:
+    config:
+      import-check:
+        enabled: false
+  profiles:
+    active: chaos-monkey
+
+chaos:
+  monkey:
+    #enabled: true
+    watcher:
+      service: true
+
+    assaults:
+      latencyActive: true
+
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: true
+    chaosmonkeyjmx:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - chaosmonkey
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
